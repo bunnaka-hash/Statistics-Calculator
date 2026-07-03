@@ -12,7 +12,7 @@ A polished, responsive statistics learning website built with HTML, Tailwind CSS
 
 ## Screenshots
 
-- Placeholder: add screenshots of the home page and calculator experience.
+
 
 ## Technologies Used
 
@@ -20,6 +20,19 @@ A polished, responsive statistics learning website built with HTML, Tailwind CSS
 - Tailwind CSS
 - Vanilla JavaScript
 - Local Storage for theme and favorites
+
+## Statistics Topics Covered
+
+- Mean
+- Median
+- Mode
+- Variance
+- Standard deviation
+- Probability
+- Binomial distribution
+- Poisson distribution
+- Normal distribution
+- Correlation and regression
 
 ## Folder Structure
 
@@ -63,18 +76,6 @@ python3 -m http.server 8000
 
 Then open http://localhost:8000.
 
-## Statistics Topics Covered
-
-- Mean
-- Median
-- Mode
-- Variance
-- Standard deviation
-- Probability
-- Binomial distribution
-- Poisson distribution
-- Normal distribution
-- Correlation and regression
 
 ## Future Improvements
 
