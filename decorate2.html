@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>StatLogic | Modern Academic Editorial</title>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Google Fonts: Inter and Playfair Display for Editorial feel -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;family=Playfair+Display:ital,wght@0,700;1,700&amp;family=JetBrains+Mono:wght@500;600&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .editorial-headline {
+            font-family: 'Playfair Display', serif;
+        }
+        .curve-animate {
+            stroke-dasharray: 1000;
+            stroke-dashoffset: 1000;
+            animation: dash 3s ease-in-out forwards infinite alternate;
+        }
+        @keyframes dash {
+            to { stroke-dashoffset: 0; }
+        }
+        .soft-shadow {
+            box-shadow: 0 10px 40px -10px rgba(0, 108, 73, 0.05);
+        }
+        .bg-gradient-hero {
+            background: radial-gradient(circle at top, #eff4ff 0%, #f8f9ff 100%);
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "error": "#ba1a1a",
+                        "on-tertiary": "#ffffff",
+                        "on-tertiary-fixed-variant": "#2f2ebe",
+                        "on-tertiary-fixed": "#07006c",
+                        "secondary-container": "#6cf8bb",
+                        "background": "#f8f9ff",
+                        "tertiary": "#000000",
+                        "on-primary": "#ffffff",
+                        "on-error-container": "#93000a",
+                        "on-surface": "#0b1c30",
+                        "on-surface-variant": "#45464d",
+                        "tertiary-fixed-dim": "#c0c1ff",
+                        "surface-variant": "#d3e4fe",
+                        "surface-container": "#e5eeff",
+                        "secondary-fixed-dim": "#4edea3",
+                        "on-secondary-container": "#00714d",
+                        "secondary": "#006c49",
+                        "primary-fixed-dim": "#bec6e0",
+                        "inverse-primary": "#bec6e0",
+                        "surface-container-highest": "#d3e4fe",
+                        "surface-container-high": "#dce9ff",
+                        "outline-variant": "#c6c6cd",
+                        "on-background": "#0b1c30",
+                        "surface-tint": "#565e74",
+                        "secondary-fixed": "#6ffbbe",
+                        "surface-dim": "#cbdbf5",
+                        "surface": "#f8f9ff",
+                        "on-primary-fixed": "#131b2e",
+                        "surface-container-lowest": "#ffffff",
+                        "on-error": "#ffffff",
+                        "primary-fixed": "#dae2fd",
+                        "inverse-on-surface": "#eaf1ff",
+                        "error-container": "#ffdad6",
+                        "outline": "#76777d",
+                        "on-secondary-fixed-variant": "#005236",
+                        "primary-container": "#131b2e",
+                        "tertiary-fixed": "#e1e0ff",
+                        "inverse-surface": "#213145",
+                        "surface-container-low": "#eff4ff",
+                        "on-secondary-fixed": "#002113",
+                        "on-primary-fixed-variant": "#3f465c",
+                        "on-primary-container": "#7c839b",
+                        "tertiary-container": "#07006c",
+                        "primary": "#000000",
+                        "on-tertiary-container": "#7073ff",
+                        "surface-bright": "#f8f9ff",
+                        "on-secondary": "#ffffff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "xl": "64px",
+                        "lg": "32px",
+                        "gutter": "32px",
+                        "container-max": "1280px",
+                        "sm": "12px",
+                        "base": "8px",
+                        "xs": "4px",
+                        "md": "20px"
+                    },
+                    "fontFamily": {
+                        "math-block": ["JetBrains Mono"],
+                        "headline-md": ["Inter"],
+                        "body-base": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "label-sm": ["JetBrains Mono"],
+                        "display-lg-mobile": ["Inter"]
+                    },
+                    "fontSize": {
+                        "math-block": ["18px", {"lineHeight": "28px", "fontWeight": "500"}],
+                        "headline-md": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
+                        "body-base": ["17px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "display-lg": ["64px", {"lineHeight": "72px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "label-sm": ["13px", {"lineHeight": "18px", "letterSpacing": "0.08em", "fontWeight": "600"}],
+                        "display-lg-mobile": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.01em", "fontWeight": "700"}]
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background text-on-surface font-body-base overflow-x-hidden antialiased">
+<!-- Header -->
+<header class="fixed top-0 w-full z-50 flex justify-between items-center px-lg h-20 bg-surface/80 backdrop-blur-md transition-all duration-300" id="top-nav">
+<div class="flex items-center gap-md">
+<span class="text-headline-md editorial-headline italic font-bold text-on-surface">StatLogic</span>
+</div>
+<nav class="hidden lg:flex items-center gap-xl">
+<a class="text-label-sm uppercase tracking-widest text-primary border-b border-primary" href="#">Home</a>
+<a class="text-label-sm uppercase tracking-widest text-on-surface-variant hover:text-primary transition-colors" href="#">Calculators</a>
+<a class="text-label-sm uppercase tracking-widest text-on-surface-variant hover:text-primary transition-colors" href="#">Datasets</a>
+<a class="text-label-sm uppercase tracking-widest text-on-surface-variant hover:text-primary transition-colors" href="#">Documentation</a>
+</nav>
+<div class="flex items-center gap-md">
+<button class="p-base hover:bg-surface-container-high rounded-full transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant">search</span>
+</button>
+<button class="bg-primary text-on-primary text-label-sm px-lg py-sm rounded-full font-bold hover:bg-on-surface transition-colors">
+            Sign In
+        </button>
+</div>
+</header>
+<main>
+<!-- Hero Section -->
+<section class="relative min-h-screen flex flex-col items-center justify-center pt-32 pb-xl px-lg bg-gradient-hero overflow-hidden">
+<div class="container mx-auto max-w-4xl text-center space-y-lg relative z-10">
+<div class="inline-flex items-center px-md py-xs bg-white text-on-surface text-[10px] tracking-[0.2em] border border-outline-variant rounded-full font-bold uppercase mb-md">
+                Precision Academic Statistics
+            </div>
+<h1 class="text-display-lg-mobile md:text-display-lg editorial-headline leading-[1.1] text-on-surface">
+                Statistics, Simplified for <span class="italic font-normal">Research.</span>
+</h1>
+<p class="text-body-base text-on-surface-variant max-w-2xl mx-auto leading-relaxed text-lg">
+                Bridge the gap between raw data and academic insight with StatLogic. Precision tools designed for the rigorous demands of modern researchers and students.
+            </p>
+<div class="flex flex-col sm:flex-row items-center justify-center gap-md pt-lg">
+<button class="bg-primary text-on-primary px-xl py-md rounded-full font-bold text-body-base hover:shadow-xl hover:-translate-y-0.5 transition-all">
+                    Start Your Analysis
+                </button>
+<button class="text-on-surface-variant px-xl py-md font-bold text-body-base hover:text-primary transition-colors flex items-center gap-sm">
+                    View Calculators <span class="material-symbols-outlined text-sm">arrow_outward</span>
+</button>
+</div>
+</div>
+<!-- Floating Distribution Graphic -->
+<div class="mt-24 w-full max-w-5xl relative px-lg">
+<div class="bg-white/40 backdrop-blur-xl border border-white/60 p-lg rounded-3xl soft-shadow overflow-hidden group">
+<svg class="w-full h-auto" viewbox="0 0 800 300">
+<path class="text-primary/20" d="M50 250 Q 200 250 400 50 T 750 250" fill="none" stroke="currentColor" stroke-width="2"></path>
+<path class="text-secondary curve-animate" d="M50 250 Q 200 250 400 50 T 750 250" fill="none" stroke="currentColor" stroke-width="3"></path>
+<!-- Point indicators -->
+<circle class="animate-pulse" cx="400" cy="50" fill="#006c49" r="6"></circle>
+<text class="fill-on-surface font-bold" font-family="JetBrains Mono" font-size="12" x="415" y="45">μ = 0</text>
+<rect fill="white" height="40" rx="20" stroke="#e2e8f0" width="120" x="580" y="200"></rect>
+<text class="fill-secondary font-bold" font-family="JetBrains Mono" font-size="12" x="600" y="225">p = 0.042</text>
+</svg>
+</div>
+<div class="absolute -top-12 -left-6 bg-white p-md border border-outline-variant rounded-2xl soft-shadow hidden md:block">
+<span class="text-[10px] tracking-widest text-outline uppercase block mb-1">Methodology</span>
+<span class="text-body-base font-bold">Two-Tailed T-Test</span>
+</div>
+<div class="absolute -bottom-6 -right-6 bg-secondary text-white p-md border border-outline-variant rounded-2xl soft-shadow hidden md:block">
+<span class="text-[10px] tracking-widest text-white/70 uppercase block mb-1">Confidence</span>
+<span class="text-body-base font-bold">95.0% Interval</span>
+</div>
+</div>
+</section>
+<!-- Section 1: Built for Researchers -->
+<section class="py-xl px-lg bg-surface relative overflow-hidden">
+<div class="container mx-auto max-w-container-max grid grid-cols-1 lg:grid-cols-2 gap-32 items-center">
+<div class="space-y-lg order-2 lg:order-1">
+<div class="space-y-base">
+<h2 class="text-headline-md md:text-[40px] editorial-headline text-on-surface leading-tight">Built for <span class="italic">Researchers</span></h2>
+<p class="text-body-base text-on-surface-variant text-lg">We understand that a result is only as good as the logic behind it. StatLogic provides transparent, academic-grade solutions.</p>
+</div>
+<div class="space-y-md">
+<div class="flex items-start gap-md group">
+<div class="w-10 h-10 shrink-0 bg-surface-container-low rounded-full flex items-center justify-center text-secondary border border-outline-variant group-hover:bg-secondary group-hover:text-white transition-colors">
+<span class="material-symbols-outlined text-xl">menu_book</span>
+</div>
+<div>
+<h4 class="font-bold text-on-surface">Step-by-Step Transparency</h4>
+<p class="text-on-surface-variant text-sm mt-1">Every calculation is accompanied by a full breakdown of formulas, intermediate values, and mathematical logic.</p>
+</div>
+</div>
+<div class="flex items-start gap-md group">
+<div class="w-10 h-10 shrink-0 bg-surface-container-low rounded-full flex items-center justify-center text-secondary border border-outline-variant group-hover:bg-secondary group-hover:text-white transition-colors">
+<span class="material-symbols-outlined text-xl">history_edu</span>
+</div>
+<div>
+<h4 class="font-bold text-on-surface">Research-Ready Documentation</h4>
+<p class="text-on-surface-variant text-sm mt-1">Export your results directly into APA tables or LaTeX code, ready for inclusion in your next publication.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="relative order-1 lg:order-2">
+<div class="rounded-3xl overflow-hidden soft-shadow bg-surface-container-high border border-outline-variant aspect-[4/5] md:aspect-square">
+<img alt="Clean academic workspace" class="w-full h-full object-cover grayscale contrast-125 opacity-90" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAtiHrVpsyN-IriHyyZCFFNmfWM3N2sGudw4-Q9WzSB4iSXQCMX4iE0SQH-UW4fq6apFcbZZksQslVZ_EDSBZ0AjW9lOyFQwbE4nnVeDZngfy7bARkS1WDhIRCdnonkry34J_wub8aYE-ljCjCIDYTH6Xd9v9dC3ff8IX6Vof97dsBydDn1Pi548A3PleqKFsWIHAEqvOqhODfXwMh3X1nA8FpeCsNTbkKntFqz6mH2RNTTKDEGhtUkpdiZjIIMy27iZRm2VNdaoaI"/>
+</div>
+<!-- Visual Overlay Card -->
+<div class="absolute -bottom-10 -left-10 bg-white p-lg border border-outline-variant rounded-2xl soft-shadow max-w-[280px] hidden sm:block">
+<div class="font-math-block text-xs text-secondary mb-base"># Calculation Logic</div>
+<code class="text-[13px] leading-relaxed text-on-surface block bg-surface-container-low p-md rounded border border-outline-variant">
+                        s = √[ Σ(x - x̄)² / (n - 1) ]<br/>
+                        s = √[ 432.5 / 14 ]<br/>
+                        s = 5.56
+                    </code>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 2: Interactive Learning (Carousel) -->
+<section class="py-xl px-lg bg-surface-container-low">
+<div class="container mx-auto max-w-container-max">
+<div class="flex flex-col md:flex-row justify-between items-end mb-xl gap-md">
+<div class="max-w-xl">
+<h2 class="text-headline-md md:text-[40px] editorial-headline text-on-surface">Interactive Learning</h2>
+<p class="text-body-base text-on-surface-variant">Explore our suite of specialized calculators, designed for every stage of your data journey.</p>
+</div>
+<div class="flex gap-sm">
+<button class="w-12 h-12 rounded-full border border-outline flex items-center justify-center hover:bg-white transition-all"><span class="material-symbols-outlined">west</span></button>
+<button class="w-12 h-12 rounded-full border border-outline flex items-center justify-center hover:bg-white transition-all"><span class="material-symbols-outlined">east</span></button>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-lg">
+<!-- Card 1 -->
+<div class="bg-white p-lg rounded-3xl soft-shadow border border-white hover:-translate-y-2 transition-all duration-500 group">
+<div class="w-14 h-14 bg-surface-container-high rounded-2xl flex items-center justify-center mb-lg group-hover:bg-secondary group-hover:text-white transition-colors">
+<span class="material-symbols-outlined text-2xl">bar_chart</span>
+</div>
+<h3 class="text-headline-md font-bold mb-sm">Descriptive</h3>
+<p class="text-on-surface-variant text-sm leading-relaxed mb-lg">Summarize your data with mean, median, mode, and measures of dispersion with zero effort.</p>
+<a class="text-label-sm font-bold uppercase tracking-widest text-primary flex items-center gap-sm" href="#">Explore <span class="material-symbols-outlined text-sm">arrow_forward</span></a>
+</div>
+<!-- Card 2 -->
+<div class="bg-white p-lg rounded-3xl soft-shadow border border-white hover:-translate-y-2 transition-all duration-500 group">
+<div class="w-14 h-14 bg-surface-container-high rounded-2xl flex items-center justify-center mb-lg group-hover:bg-secondary group-hover:text-white transition-colors">
+<span class="material-symbols-outlined text-2xl">show_chart</span>
+</div>
+<h3 class="text-headline-md font-bold mb-sm">Probability</h3>
+<p class="text-on-surface-variant text-sm leading-relaxed mb-lg">Normal, Binomial, and Poisson distribution calculators with interactive p-value visualizers.</p>
+<a class="text-label-sm font-bold uppercase tracking-widest text-primary flex items-center gap-sm" href="#">Explore <span class="material-symbols-outlined text-sm">arrow_forward</span></a>
+</div>
+<!-- Card 3 -->
+<div class="bg-white p-lg rounded-3xl soft-shadow border border-white hover:-translate-y-2 transition-all duration-500 group">
+<div class="w-14 h-14 bg-surface-container-high rounded-2xl flex items-center justify-center mb-lg group-hover:bg-secondary group-hover:text-white transition-colors">
+<span class="material-symbols-outlined text-2xl">insights</span>
+</div>
+<h3 class="text-headline-md font-bold mb-sm">Regression</h3>
+<p class="text-on-surface-variant text-sm leading-relaxed mb-lg">Perform complex linear and multiple regressions with scatter plot visualization and residuals.</p>
+<a class="text-label-sm font-bold uppercase tracking-widest text-primary flex items-center gap-sm" href="#">Explore <span class="material-symbols-outlined text-sm">arrow_forward</span></a>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 3: Academic Excellence -->
+<section class="py-xl px-lg bg-surface">
+<div class="container mx-auto max-w-container-max">
+<div class="text-center space-y-md mb-xl">
+<h2 class="text-label-sm uppercase tracking-[0.3em] text-outline">Academic Excellence</h2>
+<p class="text-headline-md editorial-headline italic text-on-surface-variant">Trusted by 10k+ Researchers Worldwide</p>
+</div>
+<!-- Minimalist Logo Cloud -->
+<div class="flex flex-wrap justify-center items-center gap-xl md:gap-32 opacity-40 grayscale contrast-150">
+<div class="text-xl font-bold editorial-headline italic">Harvard.edu</div>
+<div class="text-xl font-bold editorial-headline italic">Stanford.res</div>
+<div class="text-xl font-bold editorial-headline italic">Oxford.ac.uk</div>
+<div class="text-xl font-bold editorial-headline italic">MIT.lab</div>
+<div class="text-xl font-bold editorial-headline italic">CERN.org</div>
+</div>
+</div>
+</section>
+<!-- Final CTA -->
+<section class="py-xl px-lg bg-background">
+<div class="container mx-auto max-w-container-max">
+<div class="bg-primary-container rounded-[40px] p-xl md:p-24 text-center space-y-lg overflow-hidden relative">
+<div class="absolute inset-0 opacity-10 pointer-events-none">
+<svg class="w-full h-full" preserveaspectratio="none" viewbox="0 0 100 100">
+<path d="M0 100 C 20 0 50 0 100 100 Z" fill="white"></path>
+</svg>
+</div>
+<div class="relative z-10">
+<h2 class="text-display-lg-mobile md:text-display-lg editorial-headline text-white italic">Ready to simplify your statistics?</h2>
+<p class="text-body-base text-on-primary-container text-lg max-w-xl mx-auto">Join thousands of students and researchers using StatLogic to transform raw data into academic excellence.</p>
+<div class="flex flex-col sm:flex-row justify-center gap-md pt-lg">
+<button class="bg-secondary text-white px-xl py-md rounded-full font-bold text-lg hover:shadow-2xl transition-all">
+                            Launch Your Dashboard
+                        </button>
+<button class="border border-white/20 text-white px-xl py-md rounded-full font-bold text-lg hover:bg-white/10 transition-all">
+                            Explore All Formulas
+                        </button>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full py-xl px-lg bg-surface border-t border-outline-variant">
+<div class="container mx-auto max-w-container-max">
+<div class="flex flex-col md:flex-row justify-between items-start gap-xl pb-xl">
+<div class="space-y-md">
+<div class="text-headline-md editorial-headline italic font-bold">StatLogic</div>
+<p class="text-on-surface-variant max-w-xs text-sm">Professional academic tools for the modern researcher. Precision guaranteed.</p>
+</div>
+<div class="grid grid-cols-2 sm:grid-cols-3 gap-xl">
+<div class="space-y-md">
+<h5 class="text-label-sm uppercase tracking-widest font-bold">Resources</h5>
+<ul class="space-y-sm text-sm text-on-surface-variant">
+<li><a class="hover:text-primary transition-colors" href="#">Documentation</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Methodology</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Dataset Hub</a></li>
+</ul>
+</div>
+<div class="space-y-md">
+<h5 class="text-label-sm uppercase tracking-widest font-bold">Company</h5>
+<ul class="space-y-sm text-sm text-on-surface-variant">
+<li><a class="hover:text-primary transition-colors" href="#">About Us</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Contact</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Academic Plan</a></li>
+</ul>
+</div>
+<div class="space-y-md">
+<h5 class="text-label-sm uppercase tracking-widest font-bold">Legal</h5>
+<ul class="space-y-sm text-sm text-on-surface-variant">
+<li><a class="hover:text-primary transition-colors" href="#">Privacy</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Terms</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Ethics Policy</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="pt-lg border-t border-outline-variant flex flex-col md:flex-row justify-between items-center gap-md">
+<p class="text-label-sm text-outline">© 2024 StatLogic Academic. All rights reserved.</p>
+<div class="flex gap-md">
+<button class="p-base text-outline hover:text-primary transition-colors"><span class="material-symbols-outlined">help</span></button>
+<button class="p-base text-outline hover:text-primary transition-colors"><span class="material-symbols-outlined">language</span></button>
+</div>
+</div>
+</div>
+</footer>
+<script>
+    // Scroll effect
+    window.addEventListener('scroll', () => {
+        const nav = document.getElementById('top-nav');
+        if (window.scrollY > 50) {
+            nav.classList.add('h-16', 'bg-white', 'shadow-sm');
+            nav.classList.remove('h-20', 'bg-surface/80');
+        } else {
+            nav.classList.remove('h-16', 'bg-white', 'shadow-sm');
+            nav.classList.add('h-20', 'bg-surface/80');
+        }
+    });
+</script>
+</body></html>
