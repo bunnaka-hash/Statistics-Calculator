@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="en" class="h-full">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Statistics Calculators</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: { colors: { brand: { 500: "#2563eb", 600: "#1d4ed8" } } },
+        },
+      };
+    </script>
+    <link rel="stylesheet" href="css/styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css"
+    />
+  </head>
+  <body
+    class="min-h-full bg-slate-50 text-slate-800 transition-colors dark:bg-slate-950 dark:text-slate-100"
+  >
+    <div
+      class="loader hidden fixed inset-0 z-50 flex items-center justify-center bg-white/80 backdrop-blur dark:bg-slate-950/80"
+    >
+      <div
+        class="rounded-full border-4 border-brand-500 border-t-transparent p-6 text-brand-600 dark:text-brand-400"
+        style="animation: spin 1s linear infinite"
+      ></div>
+    </div>
+
+    <header
+      class="sticky top-0 z-40 border-b border-slate-200/70 bg-white/80 backdrop-blur dark:border-slate-800 dark:bg-slate-950/80"
+    >
+      <div
+        class="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8"
+      >
+        <a
+          href="index.html"
+          class="flex items-center gap-3 text-lg font-semibold tracking-tight"
+        >
+          <span
+            class="flex h-10 w-10 items-center justify-center rounded-2xl bg-gradient-to-br from-brand-500 to-cyan-400 text-white shadow-lg"
+            >Σ</span
+          >
+          <span>Statistics Calculator</span>
+        </a>
+        <nav class="hidden items-center gap-6 text-sm font-medium md:flex">
+          <a href="index.html" class="transition hover:text-brand-600">Home</a>
+          <a href="calculators.html" class="transition hover:text-brand-600"
+            >Calculators</a
+          >
+          <a href="formulas.html" class="transition hover:text-brand-600"
+            >Formulas</a
+          >
+          <a href="examples.html" class="transition hover:text-brand-600"
+            >Examples</a
+          >
+          <a href="practice.html" class="transition hover:text-brand-600"
+            >Practice</a
+          >
+          <a href="about.html" class="transition hover:text-brand-600">About</a>
+          <a href="contact.html" class="transition hover:text-brand-600"
+            >Contact</a
+          >
+          <a href="faq.html" class="transition hover:text-brand-600">FAQ</a>
+        </nav>
+        <div class="flex items-center gap-3">
+          <button
+            id="theme-toggle"
+            class="rounded-full border border-slate-300 p-2 text-sm dark:border-slate-700"
+            aria-label="Toggle dark mode"
+          >
+            🌙
+          </button>
+          <button
+            id="mobile-menu-toggle"
+            class="rounded-full border border-slate-300 p-2 text-sm md:hidden dark:border-slate-700"
+            aria-label="Open menu"
+          >
+            ☰
+          </button>
+        </div>
+      </div>
+      <div
+        id="mobile-menu"
+        class="hidden border-t border-slate-200 bg-white px-4 py-4 dark:border-slate-800 dark:bg-slate-950 md:hidden"
+      >
+        <div class="flex flex-col gap-3 text-sm font-medium">
+          <a href="index.html" class="transition hover:text-brand-600">Home</a>
+          <a href="calculators.html" class="transition hover:text-brand-600"
+            >Calculators</a
+          >
+          <a href="formulas.html" class="transition hover:text-brand-600"
+            >Formulas</a
+          >
+          <a href="examples.html" class="transition hover:text-brand-600"
+            >Examples</a
+          >
+          <a href="practice.html" class="transition hover:text-brand-600"
+            >Practice</a
+          >
+          <a href="about.html" class="transition hover:text-brand-600">About</a>
+          <a href="contact.html" class="transition hover:text-brand-600"
+            >Contact</a
+          >
+          <a href="faq.html" class="transition hover:text-brand-600">FAQ</a>
+        </div>
+      </div>
+    </header>
+
+    <main class="mx-auto max-w-7xl">
+      <div
+        class="mb-8 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-800 dark:bg-slate-900"
+      >
+        <p
+          class="text-sm font-semibold uppercase tracking-[0.25em] text-brand-600"
+        >
+          Interactive calculators
+        </p>
+        <h1 class="mt-3 text-3xl  font-semibold  sm:text-2xl">
+          Choose a calculator and explore the formula, steps, and
+          interpretation.
+        </h1>
+        <div
+          class="mt-5 flex flex-col gap-3 md:flex-row md:items-center md:justify-between"
+        >
+          <input
+            id="calculator-search"
+            type="search"
+            placeholder="Search calculators or topics"
+            class="w-full rounded-2xl border border-slate-300 bg-slate-50 px-4 py-3 outline-none ring-0 focus:border-brand-500 dark:border-slate-700 dark:bg-slate-950 md:max-w-md"
+            aria-label="Search calculators"
+          />
+          <div
+            id="favorites-bar"
+            class="text-sm text-slate-600 dark:text-slate-300"
+          ></div>
+        </div>
+      </div>
+
+      <div class="grid gap-6 lg:grid-cols-[320px_1fr]">
+        <aside
+          class="rounded-3xl border border-slate-200 bg-white p-4 shadow-sm dark:border-slate-800 dark:bg-slate-900"
+        >
+          <h2 class="mb-4 text-lg font-semibold">Calculator list</h2>
+          <div id="calculator-list" class="space-y-2"></div>
+        </aside>
+
+        <section
+          id="calculator-app"
+          class="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-800 dark:bg-slate-900"
+        ></section>
+      </div>
+    </main>
+
+    <footer
+      class="border-t border-slate-200 bg-white py-10 dark:border-slate-800 dark:bg-slate-950"
+    >
+      <div
+        class="mx-auto flex max-w-7xl flex-col gap-4 px-4 text-sm text-slate-600 sm:px-6 lg:flex-row lg:items-center lg:justify-between lg:px-8 dark:text-slate-300"
+      >
+        <p>© 2026 Statistics Calculator</p>
+      </div>
+    </footer>
+
+    <button
+      id="scroll-top"
+      class="fixed bottom-6 right-6 hidden rounded-full bg-brand-600 p-3 text-white shadow-lg transition hover:bg-brand-700"
+      aria-label="Scroll to top"
+    >
+      ↑
+    </button>
+    <div
+      id="toast"
+      class="fixed bottom-6 left-1/2 z-50 hidden -translate-x-1/2 rounded-full bg-slate-900 px-4 py-2 text-sm text-white shadow-lg"
+    ></div>
+
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"
+    ></script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"
+    ></script>
+    <script type="module" src="js/app.js"></script>
+  </body>
+</html>
