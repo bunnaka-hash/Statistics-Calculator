@@ -1,4 +1,4 @@
-# Statistics Calculator
+`# Statistics Calculator
 
 A polished, responsive statistics learning website built with HTML, Tailwind CSS, and vanilla JavaScript. It includes calculators, formulas, worked examples, practice problems, and a modern educational experience for students.
 
@@ -20,6 +20,18 @@ A polished, responsive statistics learning website built with HTML, Tailwind CSS
 - Tailwind CSS
 - Vanilla JavaScript
 - Local Storage for theme and favorites
+## Statistics Topics Covered
+
+- Mean
+- Median
+- Mode
+- Variance
+- Standard deviation
+- Probability
+- Binomial distribution
+- Poisson distribution
+- Normal distribution
+- Correlation and regression
 
 ## Statistics Topics Covered
 
@@ -90,3 +102,4 @@ Built as a complete educational web app for statistics learning.
 ## License
 
 MIT
+`
