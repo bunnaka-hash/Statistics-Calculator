@@ -1,4 +1,4 @@
-`# Statistics Calculator
+# Statistics Calculator
 
 A polished, responsive statistics learning website built with HTML, Tailwind CSS, and vanilla JavaScript. It includes calculators, formulas, worked examples, practice problems, and a modern educational experience for students.
 
@@ -102,4 +102,3 @@ Built as a complete educational web app for statistics learning.
 ## License
 
 MIT
-`
