@@ -56,6 +56,19 @@ function wrapMath(text) {
   return `\\(${text}\\)`;
 }
 
+async function loadHeaderComponent() {
+  const placeholder = document.getElementById("header-placeholder");
+  if (!placeholder) return;
+
+  try {
+    const response = await fetch("components/header.html");
+    if (!response.ok) throw new Error("Header component not found");
+    placeholder.innerHTML = await response.text();
+  } catch (error) {
+    console.warn("Failed to load header component:", error);
+  }
+}
+
 function renderMath(root = document.body) {
   if (typeof renderMathInElement !== "function") return;
   renderMathInElement(root, {
@@ -1175,16 +1188,31 @@ function initFavorites() {
     : "No favorites saved yet.";
 }
 
-initTheme();
-initMobileMenu();
-initScrollTop();
-initLoader();
+loadHeaderComponent().finally(() => {
+  initTheme();
+  initMobileMenu();
+  initScrollTop();
+  initLoader();
 
-if (document.getElementById("calculator-list")) {
+  if (document.getElementById("calculator-list")) {
+    initCalculatorInteraction();
+    initHomePage();
+    initFavorites();
+  }
+
+  if (document.getElementById("formula-library")) {
+    renderFormulaLibrary();
+    initFormulaPage();
+  }
+
+  if (document.getElementById("practice-list")) {
+    renderPractice();
+  }
+});
   initCalculatorInteraction();
   initHomePage();
   initFavorites();
-}
+
 
 if (document.getElementById("formula-library")) {
   renderFormulaLibrary();
