@@ -1,3 +1,7 @@
+import { initNavigation } from "./ui.js";
+import { loadPage } from "./router.js";
+
+initNavigation(loadPage);
 import { getStorage, setStorage, showToast } from "./helper.js";
 import {
   initLoader,

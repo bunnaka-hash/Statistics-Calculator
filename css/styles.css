@@ -39,3 +39,15 @@ body {
 .result-box {
   border-left: 4px solid #2563eb;
 }
+.nav-link {
+  transition: color 0.2s ease;
+}
+
+.nav-link:hover {
+  color: #2563eb;
+}
+
+.nav-link.active {
+  color: #2563eb;
+  font-weight: 600;
+}
