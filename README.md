@@ -46,30 +46,35 @@ A polished, responsive statistics learning website built with HTML, Tailwind CSS
 - Normal distribution
 - Correlation and regression
 
-## Folder Structure
+## File Structure
 
-```text
-.
-├── index.html
-├── calculators.html
-├── formulas.html
-├── examples.html
-├── practice.html
-├── about.html
-├── contact.html
-├── faq.html
-├── css/
-│   └── styles.css
-├── js/
-│   ├── app.js
-│   ├── helper.js
-│   ├── statistics.js
-│   ├── probability.js
-│   ├── distributions.js
-│   ├── regression.js
-│   ├── validation.js
-│   └── ui.js
-└── README.md
+```
+index.html                              (Entry point)
+js/
+├── app.js                             (App initialization)
+├── router.js                          (Page loading & history)
+├── ui.js                              (Navigation & UI init)
+├── statistics.js
+├── probability.js
+├── distributions.js
+├── regression.js
+├── validation.js
+├── helper.js
+└── ...other files
+components/
+├── layouts/
+│   └── main.layout.html              (Main layout template)
+├── header.html                       (Navbar)
+├── footer.html                       (Footer - NEW)
+└── pages/
+    ├── home.html
+    ├── calculators.html
+    ├── formulas.html
+    ├── examples.html
+    ├── practice.html
+    ├── about.html
+    ├── contact.html
+    └── faq.html
 ```
 
 ## Installation

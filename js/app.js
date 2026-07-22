@@ -1,7 +1,3 @@
-import { initNavigation } from "./ui.js";
-import { loadPage } from "./router.js";
-
-initNavigation(loadPage);
 import { getStorage, setStorage, showToast } from "./helper.js";
 import {
   initLoader,
@@ -9,7 +5,10 @@ import {
   initScrollTop,
   initSearch,
   initTheme,
+  initNavigation,
+  setActiveNav,
 } from "./ui.js";
+import { loadPage, initRouter } from "./router.js";
 import {
   buildDescriptiveSteps,
   calculateMean,
@@ -60,16 +59,75 @@ function wrapMath(text) {
   return `\\(${text}\\)`;
 }
 
-async function loadHeaderComponent() {
-  const placeholder = document.getElementById("header-placeholder");
-  if (!placeholder) return;
+async function initializeApp() {
+  const appContainer = document.getElementById("app");
+  if (!appContainer) return;
 
   try {
-    const response = await fetch("components/header.html");
-    if (!response.ok) throw new Error("Header component not found");
-    placeholder.innerHTML = await response.text();
+    // 1. Load the main layout
+    const layoutResponse = await fetch("components/layouts/main.layout.html");
+    if (!layoutResponse.ok) throw new Error("Layout not found");
+    appContainer.innerHTML = await layoutResponse.text();
+
+    // 2. Load header/navbar
+    const headerResponse = await fetch("components/header.html");
+    if (!headerResponse.ok) throw new Error("Header not found");
+    const headerContainer = document.getElementById("header");
+    if (headerContainer) {
+      headerContainer.innerHTML = await headerResponse.text();
+    }
+
+    // 3. Load footer
+    const footerResponse = await fetch("components/footer.html");
+    if (!footerResponse.ok) throw new Error("Footer not found");
+    const footerContainer = document.getElementById("footer");
+    if (footerContainer) {
+      footerContainer.innerHTML = await footerResponse.text();
+    }
+
+    // 4. Initialize UI components
+    initTheme();
+    initMobileMenu();
+    initScrollTop();
+    initLoader();
+
+    // 5. Initialize navigation and router
+    initNavigation();
+    initRouter(setActiveNav);
+
+    // 6. Load home page by default
+    const page = location.hash.replace("#", "") || "home";
+    loadPage(page);
+    setActiveNav(page);
+
+    // 7. Initialize page-specific features
+    setTimeout(() => {
+      if (document.getElementById("calculator-list")) {
+        initCalculatorInteraction();
+        initHomePage();
+        initFavorites();
+      }
+
+      if (document.getElementById("formula-library")) {
+        renderFormulaLibrary();
+        initFormulaPage();
+      }
+
+      if (document.getElementById("practice-list")) {
+        renderPractice();
+      }
+    }, 100);
   } catch (error) {
-    console.warn("Failed to load header component:", error);
+    console.error("Failed to initialize app:", error);
+    appContainer.innerHTML = `
+      <div class="flex min-h-screen items-center justify-center">
+        <div class="text-center">
+          <h1 class="text-3xl font-bold">Error</h1>
+          <p class="mt-2 text-gray-600">Failed to load the application</p>
+          <p class="mt-1 text-sm text-gray-500">${error.message}</p>
+        </div>
+      </div>
+    `;
   }
 }
 
@@ -102,7 +160,7 @@ const calculators = [
   {
     id: "median",
     title: "Median",
-    category: "Descriptive", 
+    category: "Descriptive",
     description: "Find the middle value of ordered data.",
     formula: "\\text{Median} = \\text{middle value of ordered data}",
     intro: "The median is the middle observation in an ordered list.",
@@ -1192,37 +1250,9 @@ function initFavorites() {
     : "No favorites saved yet.";
 }
 
-loadHeaderComponent().finally(() => {
-  initTheme();
-  initMobileMenu();
-  initScrollTop();
-  initLoader();
-
-  if (document.getElementById("calculator-list")) {
-    initCalculatorInteraction();
-    initHomePage();
-    initFavorites();
-  }
-
-  if (document.getElementById("formula-library")) {
-    renderFormulaLibrary();
-    initFormulaPage();
-  }
-
-  if (document.getElementById("practice-list")) {
-    renderPractice();
-  }
-});
-  initCalculatorInteraction();
-  initHomePage();
-  initFavorites();
-
-
-if (document.getElementById("formula-library")) {
-  renderFormulaLibrary();
-  initFormulaPage();
-}
-
-if (document.getElementById("practice-list")) {
-  renderPractice();
+// Initialize the app when DOM is ready
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", initializeApp);
+} else {
+  initializeApp();
 }

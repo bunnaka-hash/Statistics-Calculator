@@ -1,4 +1,5 @@
 import { debounce, getStorage, setStorage, showToast } from "./helper.js";
+import { loadPage } from "./router.js";
 
 export function initTheme() {
   const root = document.documentElement;
@@ -64,9 +65,7 @@ const menus = [
   { name: "FAQ", page: "faq" },
 ];
 
-
-
-export function initNavigation(loadPage) {
+export function initNavigation() {
   const desktop = document.getElementById("desktop-menu");
   const mobile = document.getElementById("mobile-menu-links");
 
@@ -75,9 +74,10 @@ export function initNavigation(loadPage) {
   desktop.innerHTML = "";
   mobile.innerHTML = "";
 
+  // Generate menu links
   menus.forEach((menu) => {
     desktop.innerHTML += `
-      <a href="#"
+      <a href="#${menu.page}"
          class="nav-link transition hover:text-blue-600"
          data-page="${menu.page}">
          ${menu.name}
@@ -85,43 +85,37 @@ export function initNavigation(loadPage) {
     `;
 
     mobile.innerHTML += `
-      <a href="#"
+      <a href="#${menu.page}"
          class="nav-link transition hover:text-blue-600"
          data-page="${menu.page}">
          ${menu.name}
       </a>
     `;
-    document.addEventListener("click", (e) => {
-  const link = e.target.closest("[data-page]");
-
-  if (!link) return;
-
-  e.preventDefault();
-
-  const page = link.dataset.page;
-
-  loadPage(page);
-
-  setActiveNav(page);
-});
   });
+
+  // Single event listener for all navigation clicks
   document.addEventListener("click", (e) => {
-  const link = e.target.closest("[data-page]");
+    const link = e.target.closest("[data-page]");
+    if (!link) return;
 
-  if (!link) return;
+    e.preventDefault();
+    const page = link.dataset.page;
 
-  e.preventDefault();
+    // Update URL hash
+    location.hash = `#${page}`;
 
-  const page = link.dataset.page;
+    // Load page content
+    loadPage(page);
 
-  loadPage(page);
+    // Update active nav styling
+    setActiveNav(page);
 
-  setActiveNav(page);
-});
-
-
-
-  // More code comes below...
+    // Close mobile menu if open
+    const mobileMenu = document.getElementById("mobile-menu");
+    if (mobileMenu) {
+      mobileMenu.classList.add("hidden");
+    }
+  });
 }
 export function setActiveNav(page) {
   document.querySelectorAll(".nav-link").forEach((link) => {
@@ -132,4 +126,3 @@ export function setActiveNav(page) {
     link.classList.add("text-blue-600", "font-semibold");
   });
 }
-
