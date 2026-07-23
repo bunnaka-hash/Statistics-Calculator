@@ -1,16 +1,34 @@
 import { debounce, getStorage, setStorage, showToast } from "./helper.js";
 import { loadPage } from "./router.js";
 
+function updateThemeToggle(toggle, isDark) {
+  if (!toggle) return;
+
+  toggle.innerHTML = `<span class="text-base leading-none">${isDark ? "🌙" : "☀︎"}</span>`;
+  toggle.setAttribute(
+    "aria-label",
+    isDark ? "Switch to light mode" : "Switch to dark mode",
+  );
+  toggle.classList.toggle("bg-slate-900", isDark);
+  toggle.classList.toggle("text-slate-100", isDark);
+  toggle.classList.toggle("bg-white", !isDark);
+  toggle.classList.toggle("text-slate-700", !isDark);
+}
+
 export function initTheme() {
   const root = document.documentElement;
   const savedTheme = getStorage("theme", "light");
-  root.classList.toggle("dark", savedTheme === "dark");
+  const isDark = savedTheme === "dark";
+  root.classList.toggle("dark", isDark);
   const toggle = document.getElementById("theme-toggle");
+  updateThemeToggle(toggle, isDark);
+
   if (toggle) {
     toggle.addEventListener("click", () => {
-      const isDark = root.classList.toggle("dark");
-      setStorage("theme", isDark ? "dark" : "light");
-      showToast(`Switched to ${isDark ? "dark" : "light"} mode`);
+      const nextDark = root.classList.toggle("dark");
+      setStorage("theme", nextDark ? "dark" : "light");
+      updateThemeToggle(toggle, nextDark);
+      showToast(`Switched to ${nextDark ? "dark" : "light"} mode`);
     });
   }
 }

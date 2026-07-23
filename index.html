@@ -1,36 +1,50 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Statistics Calculator</title>
-  
-  <!-- Tailwind CSS -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  
-  <!-- Custom Styles -->
-  <link rel="stylesheet" href="css/styles.css" />
-  
-  <!-- KaTeX for Math Rendering -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css" />
-  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
-  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/render-a11y-string.min.js"></script>
-  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"></script>
-</head>
-<body>
-  <!-- Main app container - layout will be loaded here -->
-  <div id="app"></div>
+<!doctype html>
+<html lang="en" class="h-full">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Statistics Calculator</title>
 
-  <!-- Scroll to top button -->
-  <button
-    id="scroll-top"
-    class="fixed bottom-8 right-8 hidden rounded-full bg-blue-600 p-3 text-white shadow-lg hover:bg-blue-700 transition"
-    aria-label="Scroll to top"
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="css/styles.css" />
+
+    <!-- KaTeX for Math Rendering -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css"
+    />
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"
+    ></script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/render-a11y-string.min.js"
+    ></script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"
+    ></script>
+  </head>
+  <body
+    class="min-h-full bg-slate-50 text-slate-800 transition-colors dark:bg-slate-950 dark:text-slate-100"
   >
-    ↑
-  </button>
+    <!-- Main app container - layout will be loaded here -->
+    <div id="app"></div>
 
-  <!-- Initialize app -->
-  <script type="module" src="js/app.js"></script>
-</body>
+    <!-- Scroll to top button -->
+    <button
+      id="scroll-top"
+      class="fixed bottom-8 right-8 hidden rounded-full bg-blue-600 p-3 text-white shadow-lg hover:bg-blue-700 transition"
+      aria-label="Scroll to top"
+    >
+      ↑
+    </button>
+
+    <!-- Initialize app -->
+    <script type="module" src="js/app.js"></script>
+  </body>
 </html>

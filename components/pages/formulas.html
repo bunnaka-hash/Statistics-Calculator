@@ -1,76 +1,20 @@
-<!doctype html>
-<html lang="en" class="h-full">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Formula Library</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-      tailwind.config = {
-        darkMode: "class",
-        theme: {
-          extend: { colors: { brand: { 500: "#2563eb", 600: "#1d4ed8" } } },
-        },
-      };
-    </script>
-    <link rel="stylesheet" href="css/styles.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css"
-    />
-  </head>
-  <body
-    class="min-h-full bg-slate-50 text-slate-800 transition-colors dark:bg-slate-950 dark:text-slate-100"
+<main class="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
+  <div
+    class="mb-8 rounded-3xl border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-800 dark:bg-slate-900"
   >
-    <header
-      class="sticky top-0 z-40 border-b border-slate-200/70 bg-white/80 backdrop-blur dark:border-slate-800 dark:bg-slate-950/80"
-    >
-      
-    </header>
-
-    <main class="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
-      <div
-        class="mb-8 rounded-3xl border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-800 dark:bg-slate-900"
-      >
-        <p
-          class="text-sm font-semibold uppercase tracking-[0.25em] text-brand-600"
-        >
-          Formula library
-        </p>
-        <h1 class="mt-3 text-3xl font-semibold sm:text-4xl">
-          A categorized reference for key statistics formulas.
-        </h1>
-        <input
-          id="formula-search"
-          type="search"
-          placeholder="Search formulas or topics"
-          class="mt-5 w-full rounded-2xl border border-slate-300 bg-slate-50 px-4 py-3 outline-none focus:border-brand-500 dark:border-slate-700 dark:bg-slate-950 md:max-w-md"
-          aria-label="Search formulas"
-        />
-      </div>
-      <div id="formula-library" class="grid gap-6"></div>
-    </main>
-
-    <button
-      id="scroll-top"
-      class="fixed bottom-6 right-6 hidden rounded-full bg-brand-600 p-3 text-white shadow-lg transition hover:bg-brand-700"
-      aria-label="Scroll to top"
-    >
-      ↑
-    </button>
-    <div
-      id="toast"
-      class="fixed bottom-6 left-1/2 z-50 hidden -translate-x-1/2 rounded-full bg-slate-900 px-4 py-2 text-sm text-white shadow-lg"
-    ></div>
-
-    <script
-      defer
-      src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"
-    ></script>
-    <script
-      defer
-      src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"
-    ></script>
-    <script type="module" src="js/app.js"></script>
-  </body>
-</html>
+    <p class="text-sm font-semibold uppercase tracking-[0.25em] text-brand-600">
+      Formula library
+    </p>
+    <h1 class="mt-3 text-3xl font-semibold sm:text-4xl">
+      A categorized reference for key statistics formulas.
+    </h1>
+    <input
+      id="formula-search"
+      type="search"
+      placeholder="Search formulas or topics"
+      class="mt-5 w-full rounded-2xl border border-slate-300 bg-slate-50 px-4 py-3 outline-none focus:border-brand-500 dark:border-slate-700 dark:bg-slate-950 md:max-w-md"
+      aria-label="Search formulas"
+    />
+  </div>
+  <div id="formula-library" class="grid gap-6"></div>
+</main>
